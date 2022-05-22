@@ -5,7 +5,7 @@ class Carrera:
     __titulo = str
     __tipo = str
 
-    def __init__(self, codigo = "vacio", nombre = "vacio",duracion = "vacio", titulo = "vacio", tipo = "vacio"):
+    def __init__(self, codigo = "vacio", nombre = "vacio",titulo = "vacio", duracion = "vacio", tipo = "vacio"):
         self.__codigo = codigo
         self.__nombre = nombre
         self.__duracion = duracion

@@ -18,9 +18,10 @@ class Facultad:
         self.__direccion = str(direccion)
         self.__localidad = str(localidad)
         self.__Telefono = str(telefono)
+        self.__Carreras = []
 
-        for i in len(ListaCarreras):
-            self.__Carreras[i].append(Carrera(ListaCarreras[i][1],ListaCarreras[i][2],ListaCarreras[i][3],ListaCarreras[i][4],ListaCarreras[i][5]))
+        for i in range(len(ListaCarreras)):
+            self.__Carreras.append(Carrera(ListaCarreras[i][1],ListaCarreras[i][2],ListaCarreras[i][3],ListaCarreras[i][4],ListaCarreras[i][5]))
     
     def getNombre(self):
         return self.__Nombre

@@ -4,9 +4,10 @@ class Ramo:
     __flores = []
 
     def __init__(self, tamaño = "vacio"):
-        self.__tamaño = tamaño
+        self.__tamaño = str(tamaño)
         self.__flores = []
     
+
     def agregarFlor(self, flor):
         self.__flores.append(flor)
 
