@@ -1,4 +1,7 @@
+from csv import writer
+import csv
 import imp
+from operator import le
 from ClaseContrato import Contrato
 import numpy
 
@@ -26,4 +29,24 @@ class ManejadorDeContratos:
     
     def MostrarContratos(self):
         for i in range(len(self.__ArregloContratos)):
-            print(self.__ArregloContratos[i])
+            if self.__ArregloContratos[i] != None:
+                print(self.__ArregloContratos[i])
+    
+    def getContratosVencimiento6(self, equipo):
+        equipo = equipo.lower()
+        for i in range(len(self.__ArregloContratos)):
+            if self.__ArregloContratos[i] != None:
+                MesesDeContrato =  self.__ArregloContratos[i].getDiferenciaMeses()
+                
+                if MesesDeContrato <= 6 and self.__ArregloContratos[i].getEquipo().getNombre().lower() == equipo:
+                    print(self.__ArregloContratos[i].getJugador())
+    
+    def GuardarContratos(self):
+        archivo = open('C:\\Users\\Usuario\\Desktop\\POO\\Unidad-3\\Ejercicio3\\Contratos.csv', 'w', newline='')
+        writer = csv.writer(archivo)
+        
+        for i in range(len(self.__ArregloContratos)):
+            if self.__ArregloContratos[i] != None:
+                linea = [str(self.__ArregloContratos[i].getJugador().getDNI()),str(self.__ArregloContratos[i].getEquipo().getNombre()) , str(self.__ArregloContratos[i].getFechaInicio()),str(self.__ArregloContratos[i].getFechaFin()),str(self.__ArregloContratos[i].getCostoMensual())]
+                writer.writerow(linea)
+        archivo.close

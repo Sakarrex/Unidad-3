@@ -8,11 +8,9 @@ class Contrato:
     __equipo = None
 
     def __init__(self, anioDeInicio,MesDeInicio,DiaDeInicio,anioDeFin,mesDeFin,diaDeFin,costoMensual, jugador = None, equipo = None):
-        formatFecha = "%d/%m/%Y %H:%M:&S.%f"
-        fechainicio = datetime(anioDeInicio,MesDeInicio,DiaDeInicio)
-        self.__fechaDeinicio = datetime.strptime(str(fechainicio),formatFecha)
-        fechaFin =  datetime(anioDeFin,mesDeFin,diaDeFin)
-        self.__fechaDeFin = datetime.strptime(str(fechaFin),formatFecha)
+        
+        self.__fechaDeinicio = datetime(anioDeInicio,MesDeInicio,DiaDeInicio)
+        self.__fechaDeFin = datetime(anioDeFin,mesDeFin,diaDeFin)
         self.__CostoMensual = costoMensual
         self.__jugador = jugador
         self.__equipo = equipo
@@ -31,3 +29,13 @@ class Contrato:
     
     def getEquipo(self):
         return self.__equipo
+    
+    def getJugador(self):
+        return self.__jugador
+    
+    
+    def getDiferenciaMeses(self):
+        return ((self.__fechaDeFin.year - self.__fechaDeinicio.year) * 12 + self.__fechaDeFin.month - self.__fechaDeinicio.month)
+    
+    def getImporteTotal(self):
+        return self.getDiferenciaMeses() * self.__CostoMensual

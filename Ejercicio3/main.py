@@ -15,15 +15,20 @@ if __name__ == "__main__":
             EquipoContrato = UnManejadorDeEquipos.getEquipo(input("Nombre de equipo del contrato: "))
             if EquipoContrato != None:
                 Jugador = UnManejadorDeJugadores.CargarJugador(input("Nombre: "), input("DNI: "), input("Ciudad natal: "), input("Pais de origen: "), input("Fecha de nacimiento: "))
-                UnManejadorDeContratos.CrearContrato(int(input("Anio de inicio: ")),int(input("Mes de inicio: ")),int(input("Dia de inicio: ")),int(input("Anio de Fin: ")),int(input("Mes de inicio: ")),int(input("Dia de inicio: ")), int(input("Costo Mensual: ")),Jugador, EquipoContrato)
+                UnManejadorDeContratos.CrearContrato(int(input("Anio de inicio: ")),int(input("Mes de inicio: ")),int(input("Dia de inicio: ")),int(input("Anio de Fin: ")),int(input("Mes de fin: ")),int(input("Dia de fin: ")), int(input("Costo Mensual: ")),Jugador, EquipoContrato)
             else:
                 print("Equipo no encontrado")
         elif switch == 2:
             UnManejadorDeJugadores.getJugadorPorDNI(input("Ingresar DNI de jugador a buscar: "))
+        elif switch == 3:
+            UnManejadorDeContratos.getContratosVencimiento6(input("Ingresar nombre de equipo: "))
+        elif switch == 4:
+            UnManejadorDeEquipos.getImporteTotal(input("Ingresar nombre de equipo: "))
+        elif switch == 5:
+            UnManejadorDeContratos.GuardarContratos()
         elif switch == 6:
             UnManejadorDeContratos.MostrarContratos()
-        elif switch == 7:
-            UnManejadorDeEquipos.getBoca()
+        
         else:
             print("codigo no valido")
         switch = int(input("switch"))
@@ -45,8 +50,9 @@ Argentina
 2022
 07
 12
-50500
+500
 1
+River
 Ronaldo
 23485234
 Rio de Janeiro
@@ -56,10 +62,11 @@ Brasil
 01
 20
 2015
-08
+02
 20
-60350
+350
 1
+River
 Messi
 20355234
 Buenos Aires
@@ -71,6 +78,6 @@ Argentina
 2022
 10
 04
-100500
+1500
 
 '''
