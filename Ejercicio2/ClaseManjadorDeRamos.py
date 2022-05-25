@@ -1,5 +1,6 @@
 from operator import le
 from ClaseRamo import Ramo
+from ClaseContador import contadoresFlor
 
 class ManejadorDeRamos:
     __listaRamos = []
@@ -31,19 +32,19 @@ class ManejadorDeRamos:
     def ContarMayorCantidadFlores(self,ManejadorFlor):
         Contador = []
         for i in range(ManejadorFlor.getTotalFlores()):
-            Contador.append([0,i])
+            Contador.append(contadoresFlor(0,i))
 
         for i in range(len(self.__listaRamos)):
             flores = self.__listaRamos[i].getFlores()
             for j in range(len(flores)):
-                Contador[flores[j].getNumero()-1][0] += 1
+                Contador[flores[j].getNumero()-1].sumarContador()
         
-        for i in range(len(Contador)):
-            print(str(Contador[i][0]) + str(Contador[i][1]+1))
-        #Contador.sort(key = lambda y: y[0])
+        #for i in range(len(Contador)):
+            #print(str(Contador[i].getContador()) + " " + str(Contador[i].getCodigo()+1))
+        Contador.sort()
         
-        #for i in range(5):
-         #   print(ManejadorFlor.getFlorPorCodigo(Contador[i][1]))
+        for i in range(5):
+            print(ManejadorFlor.getFlorPorCodigo(Contador[i].getCodigo()))
         
 
     def MostrarTotalRamos(self):
@@ -51,3 +52,22 @@ class ManejadorDeRamos:
             Flores = self.__listaRamos[i].getFlores()
             for j in range(len(Flores)):
                 print(Flores[j])
+
+    def ContarFloresPorTamanioDeRamo(self,ManejadorFlor,tamanio):
+        Contador = []
+        tamanio = tamanio.lower()
+        for i in range(ManejadorFlor.getTotalFlores()):
+            Contador.append(contadoresFlor(0,i))
+
+        for i in range(len(self.__listaRamos)):
+            if self.__listaRamos[i].getTamano() == tamanio:
+                flores = self.__listaRamos[i].getFlores()
+                for j in range(len(flores)):
+                    Contador[flores[j].getNumero()-1].sumarContador()
+        
+        #for i in range(len(Contador)):
+            #print(str(Contador[i].getContador()) + " " + str(Contador[i].getCodigo()+1))
+        Contador.sort()
+        
+        for i in range(len(Contador)):
+            print(ManejadorFlor.getFlorPorCodigo(Contador[i].getCodigo()))

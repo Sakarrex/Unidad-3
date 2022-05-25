@@ -14,7 +14,7 @@ if __name__ == "__main__":
         elif switch == 2:
            ManejadorRamos.ContarMayorCantidadFlores(ManejadorFlores)
         elif switch == 3:
-           print("c")
+           ManejadorRamos.ContarFloresPorTamanioDeRamo(ManejadorFlores, input("Ingresar tamanio de ramo: "))
         elif switch == 4:
             ManejadorRamos.MostrarTotalRamos()
         else:

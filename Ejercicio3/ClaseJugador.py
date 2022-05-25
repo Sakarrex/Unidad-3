@@ -13,3 +13,15 @@ class Jugador:
         self.__PaisDeOrigen = paisDeorigen
         self.__FechaDeNacimiento = fechadenacimiento 
         self.__contrato = contrato
+
+    def agregarContrato(self,contrato):
+        self.__contrato = contrato
+    
+    def __str__(self):
+        return "Nombre: {}, DNI: {}, CiudadNatal: {}, PaisDeOrigen: {}, Fecha de nacimiento: {}".format(self.__Nombre,self.__DNI,self.__CiudadNatal,self.__PaisDeOrigen,self.__FechaDeNacimiento) 
+    
+    def getDNI(self):
+        return self.__DNI
+
+    def getContrato(self):
+        return self.__contrato
