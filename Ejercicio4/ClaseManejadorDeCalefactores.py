@@ -45,9 +45,9 @@ class ManejadorDeCalefactores:
                     self.__minGas = (self.__ArregloCalefactores[i].getCalorias()/1000)*cantidad*costo
                     pos = i
 
-        print("El calefactor a gas de menor costo es: {} con un costo de {}".format(self.__ArregloCalefactores[pos],min))
+        print("El calefactor a gas de menor costo es: {} con un costo de {}".format(self.__ArregloCalefactores[pos],self.__minGas))
 
-        self.__MenorElectrico = self.__ArregloCalefactores[pos]
+        self.__MenorGas = self.__ArregloCalefactores[pos]
 
     
     def CalcularCalefactorElectricoMasOptimo(self,costo,cantidad):
@@ -64,6 +64,7 @@ class ManejadorDeCalefactores:
     
     def CompararMenorCalefactor(self):
         if self.__MenorGas != None and self.__MenorElectrico != None:
+            print("entra")
             if self.__minElectrico < self.__minGas:
                 print("Calefactor de menor costo: \n Tipo: Electrico, {}".format(self.__MenorElectrico))   
             else:  

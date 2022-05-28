@@ -10,4 +10,4 @@ class Calefactor:
         self.__marca = marca
     
     def __str__(self):
-        return "Modelo: {}, Marca: {}".format(self.__modelo,self.__marca)
+        return "Modelo: {}, Marca: {} ".format(self.__modelo,self.__marca)

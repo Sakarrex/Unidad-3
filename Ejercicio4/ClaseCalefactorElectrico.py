@@ -9,3 +9,6 @@ class CalefactorElectrico(Calefactor):
     
     def getPotencia(self):
         return self.__potenciaMaxima
+    
+    def __str__(self):
+        return super().__str__() + "Potencia Maxima: {}".format(self.__potenciaMaxima)
