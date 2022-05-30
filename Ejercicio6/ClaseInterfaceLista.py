@@ -1,13 +1,14 @@
 from zope.interface import interface
-from zope.interface import implementer
+
 
 class ILista(interface):
 
-    def insertarElemento(elemento,pos):
+    def insertarElemento(self,elemento,pos):
         pass
     
-    def AgregarElemento(elemento):
+    def AgregarElemento(self,elemento):
         pass
 
-    def mostrarElemento(pos):
+    def mostrarElemento(self,pos):
         pass
+

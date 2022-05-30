@@ -1,5 +1,7 @@
 
 from ClaseAparato import Aparato
+import json
+from pathlib import Path
 
 class Televisor(Aparato):
     __tipoDePantalla = str
@@ -14,6 +16,10 @@ class Televisor(Aparato):
         self.__tipoDeDefinicion = Definicion
         self.__conexionAInternet = bool(conexionInternet)
 
+    def __str__(self) -> str:
+        return super().__str__() + "Tipo de pantalla: {}, pulgadas: {}, tipo de definicion: {}, conexion a internet: {}".format(self.__tipoDePantalla,self.__pulgadas,self.__tipoDeDefinicion,self.__conexionAInternet)
+
+
     def ImporteDeVenta(self):
         precioADevolver = super().__precioBase
         if self.__tipoDeDefinicion == "SD":
@@ -25,3 +31,20 @@ class Televisor(Aparato):
         if self.__conexionAInternet == True:
             precioADevolver += super().__precioBase * 0.1
         return precioADevolver
+    
+    def __toJSON__(self):
+        
+        d = dict(__class__ = self.__class__.__name__,
+            __atributos__ = dict(
+                marca = self.getMarca(),
+                modelo = self.getModelo(),
+                color = self.getColor(),
+                pais = self.getPais(),
+                precio = self.getPrecio(),
+                tipoPantalla = self.__tipoDePantalla,
+                pulgadas = self.__pulgadas,
+                Definicion = self.__tipoDeDefinicion,
+                conexionInternet = self.__conexionAInternet
+            )
+        )
+        return d

@@ -1,5 +1,7 @@
 import abc
 from abc import ABC
+import json
+from pathlib import Path
 
 class Aparato(ABC):
     __marca =  str
@@ -15,6 +17,26 @@ class Aparato(ABC):
         self.__paisDeFabricacion = pais
         self.__precioBase = int(precio)
     
+    def __str__(self) -> str:
+        return "Marca: {}, Modelo: {}, Color: {}, Pais: {}, Precio: {}" .format(self.__marca,self.__modelo,self.__color,self.__paisDeFabricacion,self.__precioBase)
+    
+    def getMarca(self):
+        return self.__marca
+    
+    def getModelo(self):
+        return self.__modelo
+    
+    def getColor(self):
+        return self.__color
+    
+    def getPais(self):
+        return self.__paisDeFabricacion
+    
+    def getPrecio(self):
+        return self.__precioBase
+
     @abc.abstractclassmethod
     def ImporteDeVenta():
         pass
+
+    

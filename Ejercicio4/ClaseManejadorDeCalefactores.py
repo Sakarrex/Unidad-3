@@ -71,4 +71,5 @@ class ManejadorDeCalefactores:
                 print("Calefactor de menor costo: \n Tipo: A gas, {}".format(self.__MenorGas))   
 
         
-
+def __toJSON__(self):
+    

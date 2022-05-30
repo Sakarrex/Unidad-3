@@ -1,18 +1,18 @@
-from textwrap import indent
+
 from ClaseNodo import Nodo
 from zope.interface import interface
 from zope.interface import implementer
 from ClaseAparato import Aparato
-from ClaseInterfaceLista import ILista
+from ClaseLavarropas import Lavarropas
+from ClaseHeladera import Heladera
+from ClaseTelevisor import Televisor
 
-
-@implementer(ILista)
-class Lista:
+class ListaDeProgramador:
     __comienzo = None
     __actual = None
     __indice = 0
     __tope = 0
-
+    
     def __init__(self) -> None:
         self.__comienzo = None
         self.__actual = None
@@ -33,26 +33,39 @@ class Lista:
 
     
     def AgregarElemento(self,elemento):
-        Nodo = self.__comienzo
-        while Nodo.getSiguiente() != None:
-            Nodo = Nodo.getSiguiente()
+        NuevoNodo = Nodo(elemento)
+        NuevoNodo.setSiguiente(self.__comienzo)
+        self.__comienzo = NuevoNodo
+        self.__actual = NuevoNodo
         self.__tope += 1
-        Nodo.setSiguiente(elemento)
     
+   
+        
+        
+
+
     def insertarElemento(self,elemento,pos):
         try:
-            while self.__actual.getSiguiente() != None and self.__indice < pos:
-                if pos == self.__indice:
+            aux = self.__comienzo
+            ant = aux
+            i = 0
+            while aux.getSiguiente() != None and i<pos:
+                if pos == i:
                     NuevoNodo = Nodo(elemento)
-                    NuevoNodo.setSiguiente(self.__actual.getSiguiente())
-                    self.__actual.setSiguiente(NuevoNodo)
+                    NuevoNodo.setSiguiente(aux.getSiguiente())
+                    ant.setSiguiente(NuevoNodo)
+                i+=1
+                ant = aux
+                aux = aux.getSiguiente()
         except IndexError:
             print("Posicion no encontrada")
     
     def mostrarElemento(self,pos):
         elementoADevolver = None
         try:
-            while self.__actual.getSiguiente() != None and self.__indice < pos:
+            aux = self.__comienzo
+            band = False
+            while aux.getSiguiente() != None and band == False:
                 if pos == self.__indice:
                     self.__actual.getAparato()
    
@@ -61,14 +74,20 @@ class Lista:
         
         return elementoADevolver
     
-    def toJSON(self):
-        d = dict(
-            __class__ = self.__class__.__name__,
-            __atributos__ = dict(
-                comienzo = self.__comienzo,
-                actual = self.__actual,
-                indice = self.__indice,
-                tope = self.__tope
-            )
-        ) 
+    def CrearAparato(self,elemento):
+        NuevoAparato = None
+        if elemento.lower() == "heladera":
+            NuevoAparato = Heladera(input("Marca: "),input("modelo: "), input("Color: "), input("pais: "), input("precio: "),input("capacidad de litros: "),bool(input("Freezer: ")),bool(input("ciclica: ")))
+        elif elemento.lower() == "lavarropas":
+            NuevoAparato = Lavarropas(input("Marca: "),input("modelo: "), input("Color: "), input("pais: "), input("precio: "),input("capacidad de lavado: "),input("velocidad de lavado: "),input("cantidad de programas: "),input("Tipo de carga: "))
+        elif elemento.lower() == "televisor":
+            NuevoAparato = Televisor(input("Marca: "),input("modelo: "), input("Color: "), input("pais: "), input("precio: "),input("tipo de pantalla: "),input("Pulgadas: "),input("Tipo de definicion: "),input("Conexion a internet: "))
+        else:
+            print("Aparato desconocido")
+        return NuevoAparato
+    
+            
+    def __toJSON__(self):
+        d = dict(__class__ = self.__class__.__name__,
+            Aparatos = [aparato.__toJSON__() for aparato in self])
         return d
