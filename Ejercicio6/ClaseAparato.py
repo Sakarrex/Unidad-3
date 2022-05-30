@@ -1,4 +1,7 @@
-class Aparato:
+import abc
+from abc import ABC
+
+class Aparato(ABC):
     __marca =  str
     __modelo = str
     __color = str
@@ -12,5 +15,6 @@ class Aparato:
         self.__paisDeFabricacion = pais
         self.__precioBase = int(precio)
     
-    def ImporteDeVenta(self):
+    @abc.abstractclassmethod
+    def ImporteDeVenta():
         pass

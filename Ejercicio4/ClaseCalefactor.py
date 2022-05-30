@@ -1,8 +1,9 @@
 
 from statistics import mode
+import abc
+from abc import ABC
 
-
-class Calefactor:
+class Calefactor(ABC):
     __marca = str
     __modelo = str
     def __init__(self,marca,modelo):
