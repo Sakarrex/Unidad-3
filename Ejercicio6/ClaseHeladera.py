@@ -17,13 +17,13 @@ class Heladera(Aparato):
         return super().__str__() + "Capacidad de Litros: {}, Freezer: {}, Ciclica: {}".format(self.__capacidadLitros,self.__Freezer,self.__ciclica)
 
     def ImporteDeVenta(self):
-        precioADevolver = super().__precioBase
+        precioADevolver = self.getPrecio()
         if self.__Freezer == True:
-            precioADevolver += super().__precioBase*0.01
+            precioADevolver += self.getPrecio()*0.05
         else:
-            precioADevolver += super().__precioBase*0.05
+            precioADevolver += self.getPrecio()*0.01
         if self.__ciclica == True:
-            precioADevolver += super().__precioBase*0.1
+            precioADevolver += self.getPrecio()*0.1
         return precioADevolver
     
     def __toJSON__(self):

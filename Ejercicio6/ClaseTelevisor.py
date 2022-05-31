@@ -21,15 +21,15 @@ class Televisor(Aparato):
 
 
     def ImporteDeVenta(self):
-        precioADevolver = super().__precioBase
+        precioADevolver = self.getPrecio()
         if self.__tipoDeDefinicion == "SD":
-            precioADevolver += super().__precioBase * 0.01
+            precioADevolver += self.getPrecio() * 0.01
         elif self.__tipoDeDefinicion == "HD":
-            precioADevolver += super().__precioBase * 0.02
+            precioADevolver += self.getPrecio() * 0.02
         elif self.__tipoDeDefinicion == "FULL HD":
-            precioADevolver += super().__precioBase * 0.03
+            precioADevolver += self.getPrecio() * 0.03
         if self.__conexionAInternet == True:
-            precioADevolver += super().__precioBase * 0.1
+            precioADevolver += self.getPrecio() * 0.1
         return precioADevolver
     
     def __toJSON__(self):

@@ -5,21 +5,21 @@
             "__class__": "Lavarropas",
             "__atributos__": {
                 "marca": "Musimundo",
-                "modelo": "Marca D",
+                "modelo": "Modelo D",
                 "color": "Blanco",
                 "pais": "Inglaterra",
                 "precio": 750000,
                 "capacidadLavado": 5,
                 "velocidadLavado": 200,
                 "cantidadDeProgramas": 6,
-                "tipoDeCarga": "Frontal"
+                "tipoDeCarga": "Superior"
             }
         },
         {
             "__class__": "Televisor",
             "__atributos__": {
                 "marca": "Musimundo",
-                "modelo": "Marca C",
+                "modelo": "Modelo C",
                 "color": "Blanco",
                 "pais": "Estados Unidos",
                 "precio": 40000,
@@ -33,7 +33,7 @@
             "__class__": "Televisor",
             "__atributos__": {
                 "marca": "Philips",
-                "modelo": "Marca B",
+                "modelo": "Modelo B",
                 "color": "Negro",
                 "pais": "Espania",
                 "precio": 35000,
@@ -47,7 +47,7 @@
             "__class__": "Heladera",
             "__atributos__": {
                 "marca": "Philips",
-                "modelo": "Marca A",
+                "modelo": "Modelo A",
                 "color": "gris",
                 "pais": "Alemania",
                 "precio": 50000,

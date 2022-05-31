@@ -1,3 +1,4 @@
+
 from ClaseAparato import Aparato
 import json
 from pathlib import Path
@@ -18,13 +19,16 @@ class Lavarropas(Aparato):
         return super().__str__() + "capacidad de lavado: {}Kg, Valocidad de lavado: {}rpm, Cantidad de programas: {}, Tipo de carga: {}".format(self.__capacidadLavado,self.__VelocidadLavado,self.__cantidadDeProgramas,self.__tipoDeCarga)
 
     def ImporteDeVenta(self):
-        precioADevolver = super().__precioBase
+        precioADevolver = self.getPrecio()
         if self.__capacidadLavado <= 5:
-            precioADevolver += super().__precioBase*0.01
+            precioADevolver += self.getPrecio()*0.01
         else:
-            precioADevolver += super().__precioBase*0.03
+            precioADevolver += self.getPrecio()*0.03
         return precioADevolver
     
+    def getCarga(self):
+        return self.__tipoDeCarga
+
     def __toJSON__(self):
         
         d = dict(__class__ = self.__class__.__name__,

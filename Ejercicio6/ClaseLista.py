@@ -39,7 +39,8 @@ class ListaDeProgramador:
         self.__actual = NuevoNodo
         self.__tope += 1
     
-   
+    def getCabeza(self):
+       print(self.__comienzo.getAparato())
         
         
 
@@ -47,33 +48,63 @@ class ListaDeProgramador:
     def insertarElemento(self,elemento,pos):
         try:
             aux = self.__comienzo
-            ant = aux
-            i = 0
-            while aux.getSiguiente() != None and i<pos:
+            ant = None
+            i = 1
+            
+            while aux != None and i <= pos:
                 if pos == i:
-                    NuevoNodo = Nodo(elemento)
-                    NuevoNodo.setSiguiente(aux.getSiguiente())
-                    ant.setSiguiente(NuevoNodo)
-                i+=1
+                    if aux == self.__comienzo:
+                        self.AgregarElemento(elemento)
+                    else:
+                        print("entra")
+                        NuevoNodo = Nodo(elemento)
+                        NuevoNodo.setSiguiente(aux)
+                        ant.setSiguiente(NuevoNodo)
+                    
+                i += 1
                 ant = aux
                 aux = aux.getSiguiente()
         except IndexError:
             print("Posicion no encontrada")
+
+    def listarParaMi(self):
+        for i in self:
+            print(i.__class__.__name__)
+            print(i)
     
     def mostrarElemento(self,pos):
-        elementoADevolver = None
         try:
             aux = self.__comienzo
             band = False
-            while aux.getSiguiente() != None and band == False:
-                if pos == self.__indice:
-                    self.__actual.getAparato()
+            i=1
+            print("pos:" + str(pos))
+            while aux != None and band == False:
+                print (i)
+                if pos == i:
+                    print(aux.getAparato().__class__.__name__)
+                    band = True
+                i+=1
+                aux = aux.getSiguiente()
    
         except IndexError:
             print("Posicion no encontrada")
         
-        return elementoADevolver
     
+    def ListarPhilips(self):
+        for i in self:
+            if i.getMarca().lower() == "philips":
+                print(i)
+
+    def ListarLavarropasSuperior(self):
+        for i in self:
+            if isinstance(i,Lavarropas):
+                if i.getCarga().lower() == "superior":
+                    print(i.getMarca())
+                
+    def ListarTodosLosAparatos(self):
+        for i in self:
+            print(str(i.__class__.__name__) + " " + i.getMarca() +" "+ i.getPais() +" "+ str(i.ImporteDeVenta()))
+
     def CrearAparato(self,elemento):
         NuevoAparato = None
         if elemento.lower() == "heladera":

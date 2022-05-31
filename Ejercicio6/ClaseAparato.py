@@ -18,7 +18,7 @@ class Aparato(ABC):
         self.__precioBase = int(precio)
     
     def __str__(self) -> str:
-        return "Marca: {}, Modelo: {}, Color: {}, Pais: {}, Precio: {}" .format(self.__marca,self.__modelo,self.__color,self.__paisDeFabricacion,self.__precioBase)
+        return "Marca: {}, Modelo: {}, Color: {}, Pais: {}, Precio: {}, " .format(self.__marca,self.__modelo,self.__color,self.__paisDeFabricacion,self.__precioBase)
     
     def getMarca(self):
         return self.__marca
