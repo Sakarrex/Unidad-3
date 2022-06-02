@@ -2,11 +2,12 @@
 from ClaseNodo import Nodo
 from zope.interface import interface
 from zope.interface import implementer
-from ClaseAparato import Aparato
+from ClaseInterfaceLista import  ILista
 from ClaseLavarropas import Lavarropas
 from ClaseHeladera import Heladera
 from ClaseTelevisor import Televisor
 
+@implementer(ILista)
 class ListaDeProgramador:
     __comienzo = None
     __actual = None
