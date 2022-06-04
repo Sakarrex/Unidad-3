@@ -1,7 +1,7 @@
-from zope.interface import interface
+from zope.interface import Interface
+from zope.interface import implementer
 
-
-class ILista(interface):
+class ILista(Interface):
 
     def insertarElemento(self,elemento,pos):
         pass

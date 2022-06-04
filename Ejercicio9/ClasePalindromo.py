@@ -4,14 +4,14 @@ class Palindromo:
         self.__palabra = palabra
     def esPalindromo(self):
         i=0
-        j=len(self.__palabra)-1
+        j=-len(self.__palabra)
         bandera = True
-        while i<j and bandera:
+        while i<abs(j) and bandera:
            if self.__palabra[i] != self.__palabra[j]:
                bandera=False
            else:
                i += 1
-               j -= 1
+               j += 1
         return bandera
     def setPalabra(self, nuevaPalabra):
         self.__palabra = nuevaPalabra

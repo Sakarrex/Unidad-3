@@ -16,13 +16,20 @@ if __name__ == "__main__":
             if Aparato != None:
                 ListaDeAparatos.AgregarElemento(Aparato)
         elif switch == 3:
-            ListaDeAparatos.listarParaMi()
+            for i in ListaDeAparatos:
+                print(i)
         elif switch == 4:
             Aparato = ListaDeAparatos.CrearAparato(input("Ingresar tipo de aparato: "))
             if Aparato != None:
-                ListaDeAparatos.insertarElemento(Aparato,int(input("Ingeresar posicion: ")))
+                try:
+                    ListaDeAparatos.insertarElemento(Aparato,int(input("Ingeresar posicion: ")))
+                except IndexError:
+                    print("posicion no valida")
         elif switch == 5:
-            ListaDeAparatos.mostrarElemento(int(input("Posicion: ")))
+            try:
+                ListaDeAparatos.mostrarElemento(int(input("Posicion: ")))
+            except IndexError:
+                print("Posicion no valida")
         elif switch == 6:
             ListaDeAparatos.ListarPhilips()
         elif switch == 7:
@@ -31,8 +38,6 @@ if __name__ == "__main__":
             ListaDeAparatos.ListarTodosLosAparatos()
         elif switch == 9:
             UnObjectEncoder.guardarJSONArchivo(ListaDeAparatos.__toJSON__(),'aparatoselectronicos.json')
-        elif switch == 10:
-            ListaDeAparatos.getCabeza()
         else:
             print("Codigo erroneo")
         switch = int(input("switch: "))

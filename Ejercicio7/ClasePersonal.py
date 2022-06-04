@@ -2,6 +2,7 @@ from abc import ABC
 import abc
 
 
+
 class Personal(ABC):
     __cuil: str
     __nombre = str

@@ -29,6 +29,7 @@ class PersonalDeApoyo(Personal):
             SueldoAdevolver = self.getSueldoBasico() * 0.2
         elif 21 <= self.__categoria and self.__categoria <= 22:
             SueldoAdevolver = self.getSueldoBasico() * 0.3
+        return SueldoAdevolver
     
     def __str__(self):
         return super().__str__() + "Categoria: {}".format(self.__categoria)

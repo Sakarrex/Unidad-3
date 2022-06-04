@@ -6,6 +6,7 @@ from ClaseInterfaceLista import  ILista
 from ClaseLavarropas import Lavarropas
 from ClaseHeladera import Heladera
 from ClaseTelevisor import Televisor
+from ClaseInterfaceLista import ILista
 
 @implementer(ILista)
 class ListaDeProgramador:
@@ -47,48 +48,47 @@ class ListaDeProgramador:
 
 
     def insertarElemento(self,elemento,pos):
-        try:
-            aux = self.__comienzo
-            ant = None
-            i = 1
-            
-            while aux != None and i <= pos:
-                if pos == i:
-                    if aux == self.__comienzo:
-                        self.AgregarElemento(elemento)
-                    else:
-                        print("entra")
-                        NuevoNodo = Nodo(elemento)
-                        NuevoNodo.setSiguiente(aux)
-                        ant.setSiguiente(NuevoNodo)
-                    
+        if self.__tope < pos:
+            raise IndexError
+        
+        aux = self.__comienzo
+        i = 1
+        if pos == 0:
+            self.AgregarElemento(elemento)
+        else:
+            while aux != None and i < pos:
                 i += 1
-                ant = aux
                 aux = aux.getSiguiente()
-        except IndexError:
-            print("Posicion no encontrada")
+            if pos == i:
+                    print("entra")
+                    NuevoNodo = Nodo(elemento)
+                    NuevoNodo.setSiguiente(aux.getSiguiente())
+                    aux.setSiguiente(NuevoNodo)
+                    self.__tope += 1
+       
 
     def listarParaMi(self):
         for i in self:
-            print(i.__class__.__name__)
+            print(i)
             print(i)
     
     def mostrarElemento(self,pos):
-        try:
-            aux = self.__comienzo
-            band = False
-            i=1
-            print("pos:" + str(pos))
-            while aux != None and band == False:
-                print (i)
-                if pos == i:
-                    print(aux.getAparato().__class__.__name__)
-                    band = True
-                i+=1
-                aux = aux.getSiguiente()
+        if self.__tope < pos:
+            raise IndexError
+
+        aux = self.__comienzo
+        band = False
+        i=1
+        print("pos:" + str(pos))
+        while aux != None and band == False:
+            print (i)
+            if pos == i:
+                print(aux.getAparato().__class__.__name__)
+                band = True
+            i+=1
+            aux = aux.getSiguiente()
    
-        except IndexError:
-            print("Posicion no encontrada")
+        
         
     
     def ListarPhilips(self):
