@@ -7,7 +7,7 @@ class Palindromo:
         j=-len(self.__palabra)
         bandera = True
         while i<abs(j) and bandera:
-           if self.__palabra[i] != self.__palabra[j]:
+           if self.__palabra[i].lower() != self.__palabra[abs(j)-1].lower():
                bandera=False
            else:
                i += 1

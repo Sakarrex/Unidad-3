@@ -7,7 +7,7 @@ from ClasePersonal import Personal
 if __name__ == '__main__':
     ListaDePersonal = ListaDeProgramador()
     UnObjectEncoder = ObjectEncoder()
-    switch = int(input("Switch: "))
+    switch = int(input("1: Cargar Archivo\n2: Agregar Agente\n3: Insertar Agente\n4: Mostrar posicion\n5:Mostrar docentes investigadores por carrera\n6: Mostrar agentes por area de investigacion\n7: Listar todos los agentes\n8: Listar Docentes Investigadores por categoria\n9: Guardar archivo"))
     while switch != 0:
         if switch == 1:
             d = UnObjectEncoder.leerJSONArchivo("personal.json")
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
         else:
             print("Codigo erroneo")
-        switch = int(input("Switch: "))
+        switch = int(input("1: Cargar Archivo\n2: Agregar Agente\n3: Insertar Agente\n4: Mostrar posicion\n5:Mostrar docentes investigadores por carrera\n6: Mostrar agentes por area de investigacion\n7: Listar todos los agentes\n8: Listar Docentes Investigadores por categoria\n9: Guardar archivo"))
 
 '''
 
