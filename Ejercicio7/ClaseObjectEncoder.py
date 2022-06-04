@@ -15,7 +15,7 @@ class ObjectEncoder:
             class_name = d['__class__']
             class_ = eval(class_name)
             if class_name == "ListaDeProgramador":
-                ListaPersonal = d['Aparatos']
+                ListaPersonal = d['ListaPersonal']
                 ClaseListaProgramador = class_()
                 DPersonal = ListaPersonal[0]
                 for i in range(len(ListaPersonal)):
@@ -24,7 +24,7 @@ class ObjectEncoder:
                     class_ = eval(class_name)
                     atributos = DPersonal['__atributos__']
                     UnPersonal = class_(**atributos)
-                    ClaseListaProgramador.AgregarElemento(UnPersonal)
+                    ClaseListaProgramador.AgregarDato(UnPersonal)
             return ClaseListaProgramador               
 
         

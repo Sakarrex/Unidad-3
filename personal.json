@@ -1,0 +1,92 @@
+{
+    "__class__": "ListaDeProgramador",
+    "ListaPersonal": [
+        {
+            "__class__": "PersonalDeApoyo",
+            "__atributos__": {
+                "cuil": "9032-325j2-325k",
+                "nombre": "Maria",
+                "apellido": "Laura",
+                "sueldobasico": 83245,
+                "antiguedad": 5,
+                "categoria": 15
+            }
+        },
+        {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "9415-wfa21-214-g31",
+                "nombre": "Antonio",
+                "apellido": "Bertz",
+                "sueldobasico": 30000,
+                "antiguedad": 2,
+                "carrera": "LCC",
+                "cargo": "exclusivo",
+                "catedra": "Algortimos",
+                "areaDeInvestigacion": "Area B",
+                "tipoDeInvestigacion": "Investigacion B",
+                "categoriaProgramaIncentivos": "II",
+                "importeExtraDocenciaEInvestigacion": 70000
+            }
+        },
+        {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "1249-gae2-g3k4",
+                "nombre": "Juan",
+                "apellido": "Manolo",
+                "sueldobasico": 45000,
+                "antiguedad": 10,
+                "carrera": "LSI",
+                "cargo": "exclusivo",
+                "catedra": "Algortimos",
+                "areaDeInvestigacion": "Area A",
+                "tipoDeInvestigacion": "Investigacion B",
+                "categoriaProgramaIncentivos": "I",
+                "importeExtraDocenciaEInvestigacion": 20000
+            }
+        },
+        {
+            "__class__": "Docente",
+            "__atributos__": {
+                "cuil": "9124-ji1-214f-123hi",
+                "nombre": "Maria",
+                "apellido": "Peralta",
+                "sueldobasico": 85000,
+                "antiguedad": 6,
+                "carrera": "TUPW",
+                "cargo": "simple",
+                "catedra": "Estructura y funcionamiento de computadoras"
+            }
+        },
+        {
+            "__class__": "Investigador",
+            "__atributos__": {
+                "cuil": "124-912g12-12tui",
+                "nombre": "Laura",
+                "apellido": "Carmen",
+                "sueldobasico": 50000,
+                "antiguedad": 3,
+                "areaDeInvestigacion": "Area A",
+                "tipoDeInvestigacion": "Investigacion C"
+            }
+        },
+        {
+            "__class__": "DocenteInvestigador",
+            "__atributos__": {
+                "cuil": "9415-wfa21-214-g31",
+                "nombre": "Gustavo",
+                "apellido": "Berenstein",
+                "sueldobasico": 30000,
+                "antiguedad": 2,
+                "carrera": "LCC",
+                "cargo": "exclusivo",
+                "catedra": "Algortimos",
+                "areaDeInvestigacion": "Area B",
+                "tipoDeInvestigacion": "Investigacion B",
+                "categoriaProgramaIncentivos": "II",
+                "importeExtraDocenciaEInvestigacion": 40000
+            }
+        }
+    ]
+}

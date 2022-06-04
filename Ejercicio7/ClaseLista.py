@@ -1,3 +1,5 @@
+from ctypes import c_uint
+from webbrowser import get
 from ClaseDocente import Docente
 from ClaseInvestigador import Investigador
 from ClasePesonalDeApoyo import PersonalDeApoyo
@@ -23,7 +25,7 @@ class ListaDeProgramador:
         return self
     
     def __next__(self):
-        if self.__actual == self.__tope:
+        if self.__indice == self.__tope:
             self.__actual = self.__comienzo
             self.__indice = 0
             raise StopIteration
@@ -35,27 +37,36 @@ class ListaDeProgramador:
     
     def AgregarDato(self,dato):
         NuevoNodo = Nodo(dato)
-        NuevoNodo.setSiguiente(self.__comienzo)
-        self.__comienzo = NuevoNodo
-        #print(self.__comienzo.getDato())
-        self.__actual = NuevoNodo
+
+        if self.__comienzo == None:
+            self.__comienzo = NuevoNodo
+            self.__actual = self.__comienzo
+        else:
+            aux = self.__comienzo
+            while aux.getSiguiente() != None:
+                aux = aux.getSiguiente()
+            aux.setSiguiente(NuevoNodo)
+
         self.__tope += 1
     
     def Insertar(self,dato,pos):
         if self.__tope < pos:
             raise IndexError
         
+        NuevoNodo = Nodo(dato)
         aux = self.__comienzo
         i = 1
-        if pos == 0:
-            self.AgregarElemento(dato)
+        if pos == 1:
+            NuevoNodo.setSiguiente(self.__comienzo)
+            self.__comienzo = NuevoNodo
+            self.__actual = self.__comienzo
         else:
-            while aux != None and i < pos:
+            while aux.getSiguiente() != None and i < (pos-1):
                 i += 1
                 aux = aux.getSiguiente()
-            if pos == i:
+            if (pos-1) == i:
                     print("entra")
-                    NuevoNodo = Nodo(dato)
+                    
                     NuevoNodo.setSiguiente(aux.getSiguiente())
                     aux.setSiguiente(NuevoNodo)
                     self.__tope += 1
@@ -96,10 +107,10 @@ class ListaDeProgramador:
         contadorInvestigadores = 0
         for i in self:
             if isinstance(i,DocenteInvestigador):
-                if self.getAreaDeInvestigacion() == area:
+                if i.getAreaDeInvestigacion() == area:
                     contadorDocenteInvestigador += 1
             elif isinstance(i,Investigador):
-                if self.getAreaDeInvestigacion() == area:
+                if i.getAreaDeInvestigacion() == area:
                     contadorInvestigadores += 1
         print("Hay: {} Docentes Investigadores y {} Investigadores en el area {}".format(contadorDocenteInvestigador, contadorInvestigadores,area))
     
@@ -119,7 +130,7 @@ class ListaDeProgramador:
         Total = 0
         for i in self:
             if isinstance(i,DocenteInvestigador):
-                if i.getAreaDeInvestigacion() == categoria:
+                if i.getCategoriaProgramaIncentivos() == categoria:
                     print("Nombre: {}, Apellido: {}, Importe Extra: {}".format(i.getNombre(),i.getApellido(),i.getImporteDocienciaEInvestigacion()))
                     Total += i.getImporteDocienciaEInvestigacion()
         
@@ -135,14 +146,22 @@ class ListaDeProgramador:
 
     def GenerarPersonal(self,personal):
         personalADevolver = None
-        if personal.lower() == "docente":
-            personalADevolver = Docente(input("Cuil:"),input("Nombre: "), input("Apellido: "),int(input("SueldoBasico:")),int(input("Antiguedad: ")),input("Carrera: "),input("cargo: "),input("Catedra: "))
-        elif personal.lower() == "investigador":
-            personalADevolver = Investigador(input("Cuil:"),input("Nombre: "), input("Apellido: "),int(input("SueldoBasico:")),int(input("Antiguedad: ")),input("AreaDeInvestigacion: "),input("Tipo de investigacion: "))
-        elif personal.lower() == "docente investigador":
-            personalADevolver = DocenteInvestigador(input("Cuil:"),input("Nombre: "), input("Apellido: "),int(input("SueldoBasico:")),int(input("Antiguedad: ")),input("Carrera: "),input("cargo: "),input("Catedra: "),input("AreaDeInvestigacion: "),input("Tipo de investigacion: "),input("Categoria De incentivo: "),int(input("Importe extra docencia e investigacion: ")))
-        elif personal.lower() == "personal de apoyo":
-            personalADevolver = PersonalDeApoyo(input("Cuil:"),input("Nombre: "), input("Apellido: "),int(input("SueldoBasico:")),int(input("Antiguedad: ")),input("Categoria: "))
+        
+        if personal.lower() == "docente" or personal.lower() == "investigador" or personal.lower() == "docente investigador" or personal.lower() == "personal de apoyo": 
+            cuil = input("Ingersar cuil:") 
+            nombre= input("Ingresar nombre: ")
+            apellido = input("Ingersar apellido: ")
+            sueldobasico = int(input("Ingresar sueldobasico: "))
+            antiguedad = int(input("Ingersar antiguedad: "))
+
+            if personal.lower() == "docente":
+                personalADevolver = Docente(cuil,nombre,apellido,sueldobasico,antiguedad,carrera=input("Carrera: "),cargo=input("cargo: "),catedra=input("Catedra: "))
+            elif personal.lower() == "investigador":
+                personalADevolver = Investigador(cuil=cuil,nombre=nombre,apellido=apellido,sueldobasico=sueldobasico,antiguedad=antiguedad,areaDeInvestigacion=input("AreaDeInvestigacion: "),tipoDeInvestigacion=input("Tipo de investigacion: "))
+            elif personal.lower() == "docente investigador":
+                personalADevolver = DocenteInvestigador(cuil,nombre,apellido,sueldobasico,antiguedad,carrera=input("Carrera: "),cargo=input("cargo: "),catedra=input("Catedra: "),areaDeInvestigacion=input("AreaDeInvestigacion: "),tipoDeInvestigacion=input("Tipo de investigacion: "),categoriaProgramaIncentivos=input("Categoria De incentivo: "),importeExtraDocenciaEInvestigacion=int(input("Importe extra docencia e investigacion: ")))
+            elif personal.lower() == "personal de apoyo":
+                personalADevolver = PersonalDeApoyo(cuil,nombre,apellido,sueldobasico,antiguedad,categoria=input("Categoria: "))
         else: 
             print("Personal no econtrado")
         return personalADevolver

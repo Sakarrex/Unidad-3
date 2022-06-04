@@ -8,8 +8,8 @@ class Docente(Personal):
     __cargo = str
     __catedra = str
 
-    def __init__(self, cuil, nombre, apellido, sueldobasico, antiguedad,carrera,cargo,catedra):
-        super().__init__(cuil, nombre, apellido, sueldobasico, antiguedad)
+    def __init__(self, cuil:str, nombre:str, apellido:str, sueldobasico:int, antiguedad:int,carrera:str,cargo:str,catedra:str,**kwargs):
+        super().__init__(cuil, nombre, apellido, sueldobasico, antiguedad,**kwargs)
         self.__carrera = carrera
         self.__cargo = cargo
         self.__catedra = catedra
@@ -42,9 +42,9 @@ class Docente(Personal):
                 apellido = self.getApellido(),
                 sueldobasico = self.getSueldoBasico(),
                 antiguedad = self.getAntiguedad(),
-                carrera = self.__carrera,
-                cargo = self.__cargo,
-                catedra = self.__catedra
+                carrera = self.getCarrera(),
+                cargo = self.getCargo(),
+                catedra = self.getCatedra()
             )
         )
         return d

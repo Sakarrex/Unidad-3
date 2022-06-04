@@ -36,9 +36,16 @@ class ListaDeProgramador:
     
     def AgregarElemento(self,elemento):
         NuevoNodo = Nodo(elemento)
-        NuevoNodo.setSiguiente(self.__comienzo)
-        self.__comienzo = NuevoNodo
-        self.__actual = NuevoNodo
+
+        if self.__comienzo == None:
+            self.__comienzo = NuevoNodo
+            self.__actual = self.__comienzo
+        else:
+            aux = self.__comienzo
+            while aux != None:
+                aux = aux.getSiguiente()
+            aux.setSiguiente(NuevoNodo)
+
         self.__tope += 1
     
     def getCabeza(self):
@@ -51,17 +58,20 @@ class ListaDeProgramador:
         if self.__tope < pos:
             raise IndexError
         
+        NuevoNodo = Nodo(elemento)
         aux = self.__comienzo
         i = 1
-        if pos == 0:
-            self.AgregarElemento(elemento)
+        if pos == 1:
+            NuevoNodo.setSiguiente(self.__comienzo)
+            self.__comienzo = NuevoNodo
+            self.__actual = self.__comienzo
         else:
-            while aux != None and i < pos:
+            while aux.getSiguiente() != None and i < (pos-1):
                 i += 1
                 aux = aux.getSiguiente()
-            if pos == i:
+            if (pos-1) == i:
                     print("entra")
-                    NuevoNodo = Nodo(elemento)
+                    
                     NuevoNodo.setSiguiente(aux.getSiguiente())
                     aux.setSiguiente(NuevoNodo)
                     self.__tope += 1

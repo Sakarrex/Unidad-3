@@ -14,7 +14,6 @@ if __name__ == '__main__':
             ListaDePersonal = UnObjectEncoder.decodificarDiccionario(d)
         elif switch == 2:
             P = ListaDePersonal.GenerarPersonal(input("Ingresar tipo de personal: "))
-            print(P)
             if P != None:
                 ListaDePersonal.AgregarDato(P)
         elif switch == 3:
@@ -32,7 +31,7 @@ if __name__ == '__main__':
         elif switch == 5:
             ListaDePersonal.MostrarDocentesInvestigadores(input("Ingresar carrera: "))
         elif switch == 6:
-            ListaDePersonal.MostrarPorArea(input("Ingreasr area de investigacion: "))
+            ListaDePersonal.MostrarPorArea(input("Ingreasar area de investigacion: "))
         elif switch == 7:
             ListaDePersonal.MostrarTodosAgentes()
         elif switch == 8:
@@ -48,8 +47,7 @@ if __name__ == '__main__':
         switch = int(input("Switch: "))
 
 '''
-cuil, apellido, nombre, sueldo básico y antigüedad 
-clases, cargo, cátedra, área de investigación y tipo de investigación, categoría en el programa de incentivos de investigación, importe extra por docencia e investigación.
+
 
 2
 personal de apoyo
@@ -59,31 +57,24 @@ Laura
 83245
 5
 15
-
-
-2
-Docente Investigador
-["cuil"="81-1ga24-1ag21a","nombre"="Juan","apellido"="Carlos","sueldoBasico"=43000,"antiguedad"=4,"carrera"="LCC","cargo"="semiexclusivo","catedra"="Algoritmos","areaDeInvestigacion"="Area A","tipoDeInvestigacion"="Investigacion A","categoriaProgramaIncentivos"="I","importeExtraDocenciaEInvestigacion"=5000]
-
-
 2
 Docente Investigador
 9415-wfa21-214-g31
-Manuel
-Perez
+Antonio
+Bertz
 30000
 2
 LCC
 exclusivo
 Algortimos
-Area A
+Area B
 Investigacion B
-I
+II
 70000
 2
 Docente Investigador
 1249-gae2-g3k4
-Marcos
+Juan
 Manolo
 45000
 10
@@ -93,6 +84,50 @@ Algortimos
 Area A
 Investigacion B
 I
-70000
+20000
+2
+Docente
+9124-ji1-214f-123hi
+Maria
+Peralta
+85000
+6
+TUPW
+simple
+Estructura y funcionamiento de computadoras
+2
+Investigador
+124-912g12-12tui
+Laura
+Carmen
+50000
+3
+Area A
+Investigacion C
+2
+Docente Investigador
+9415-wfa21-214-g31
+Gustavo
+Berenstein
+30000
+2
+LCC
+exclusivo
+Algortimos
+Area B
+Investigacion B
+II
+40000
+
+
+3
+personal de apoyo
+PRUEBA INSERTAR
+Angela
+Martinez
+36000
+2
+15
+
 
 '''        

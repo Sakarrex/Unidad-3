@@ -10,7 +10,7 @@ class Personal(ABC):
     __sueldoBasico = int
     __antiguedad = int
 
-    def __init__(self,cuil,nombre,apellido,sueldobasico,antiguedad):
+    def __init__(self,cuil:str,nombre:str,apellido:str,sueldobasico:int,antiguedad:int,**kwargs):
         self.__cuil = cuil
         self.__nombre = nombre
         self.__apellido = apellido
